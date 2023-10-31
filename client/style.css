@@ -1,0 +1,16 @@
+#form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#formbox{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+div.container{
+    border: 2px solid black;
+    border-radius: 5px;
+}
