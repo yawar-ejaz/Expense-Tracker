@@ -1,4 +1,3 @@
-const validator = require("validator");
 const Users = require("../models/users");
 const ResetPassword = require("../models/resetPassword");
 const { encrypt, isMatching } = require("../utils/hashing");
@@ -164,12 +163,11 @@ const verifyToken = async (req, res, next) => {
         success: true,
         message: "token valid",
       });
-    } else {
-      return res.status(404).json({
-        success: false,
-        message: "token invalid",
-      });
     }
+    return res.status(404).json({
+      success: false,
+      message: "token invalid",
+    });
   } catch (error) {
     console.log(error);
     return res.status(404).json({

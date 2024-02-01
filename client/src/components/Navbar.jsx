@@ -45,6 +45,9 @@ const Navbar = ({ title = "Title here" }) => {
             dispatch({
               type: ACTIONS.UPGRADE,
             });
+            const user = JSON.parse(localStorage.getItem("user"));
+            user.isPremium = true;
+            localStorage.setItem("user", JSON.stringify(user));
           }
         } catch (error) {
           console.log(error);

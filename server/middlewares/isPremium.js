@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/users");
+const Users = require("../models/users");
 
 const isPremium = async(req, res, next) => {
     const { authorization } = req.headers;
@@ -12,9 +12,7 @@ const isPremium = async(req, res, next) => {
     const token = authorization.split(" ")[1];
     try {
         const { _id } = jwt.verify(token, process.env.JWT_SECRET);
-        const user = await Users.findOne(_id, {
-            attributes: { isPremium }
-        });
+        const user = await Users.findOne({ _id }).select("isPremium");
         if (user.isPremium == true) {
             req.user = user;
             next();
